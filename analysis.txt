@@ -1,0 +1,77 @@
+/*******************************************************************************
+* NAME: HAROLD DANE C. BAGUINON                                                *
+* DATE: 02/06/2016                                                             *
+* DATE DUE: 02/11/2016 11:59:00 PM                                             *
+* COURSE: CSC555 010                                                           *
+* PROFESSOR: DR. ZHANG                                                         *
+* PROJECT: #1                                                                  *
+* FILENAME: analysis.txt                                                       *
+* PURPOSE: This program is the first project. The purpose of the project is to *
+*          decrypt a message which was encrypted using a monoalphabetic cipher.*
+*          The first program will read in the ciphertext file and analyze it   *
+*          for the frequency of letters. The second program will allow the user*
+*          to manually decrypt the message by substituing individual letters in*
+*          the ciphertext, eventually leading to the decrypted message.        *
+*******************************************************************************/
+
+    A message, which was written in English, was encrypted using a simple
+monoalphabetic cipher. The cipher works as follows: each letter in the message 
+is changed to a different but consistent letter. For example, every "T" may have
+been changed to a "G". It is the job of the computer scientist to decrypt the 
+ciphertext by creating two programs which will analyze the message.
+
+    The first program, frequency.cpp, was designed to read a ciphertext file and
+input it into an array, with a counter incrementing as each letter is added. The
+counter keeps track of the total number of letters in the ciphertext. The array
+is actually an array of structs rather than an array of characters. This is
+because the struct contains two data members: the letter and its occurrence.
+The occurrence is used to calculate the letter's frequency. Once the array of 
+structs is created, the letters are sorted in alphabetical order, with duplicate
+letters removed. This way, the output is limited to just the letters, commas, or
+periods. I decided to include commas and periods in case they were used in the
+cipher as well. Knowing that they are not, I modified the frequency calculation
+to only include letters (and not commas or periods). The output of this program
+is simply a repetition of the ciphertext, followed by each letter in
+alphabetical order with its corresponding frequency. Frequency is calculated by
+taking the letter's occurrence and dividing it by the total number of letters
+that appear in the ciphertext message.
+
+    The second program, decrypt.cpp, was designed to read the same ciphertext
+file and read it into an array of characters. Another array is created which is
+an array of structs. The struct this time contains two data members: the letter
+and its corresponding letter mapping (the datatypes are both chars). The program
+first reads in the file, then outputs it, provides the current letter mapping 
+(which is initially empty, as asterisks represent unmapped letters), then
+displays a menu which the user is able to choose from printing the ciphertext,
+printing the letter mapping, editing the letter map, or quitting the program. If
+the user chooses to edit the letter map, the program first asks which letter the
+user would like to change, followed by the new letter which it should become.
+Once a letter in the map is changed, its mapping in the ciphertext also changes.
+The user can repeat the process until each one of the letters in the ciphertext
+has been decrypted.
+
+    In the English language, the two most frequently used letters are e and t.
+With this knowledge, a user can use the frequency.cpp program to analyze the
+frequency of each letter. The resulting letters with the highest two frequencies
+are likely to be "e" and "t", respectively. By using frequency.cpp, the user can
+find the frequencies of all of the letters in the ciphertext. By knowing the two
+most frequently used characters in the ciphertext, in this case "e"
+and "w", the user can use the second program, decrypt.cpp, to change the key
+mapping for "E" and "W" to "e" and "t". After doing this, the user can
+experiment with short words, such as "on", "and", and "the", and test different
+letter mappings. The letters found in these three words begin to appear in other
+words in the ciphertext. Soon, the words "dedicated", "this", and "continent"
+appear. Other words begin to show, although a bit obscured, but it slowly
+becomes easier to choose which letters to input next, such as "p" in place of 
+"R" or "r" in place of "N". Eventually, it becomes clear that the original
+message was the first sentence of Abraham Lincoln's Gettysburg Address.
+
+Design decisions:
+    I used functions that I had previously written in my CSC136 course, where I
+learned about the "struct". I decided to keep the same name of the struct as an
+homage to what I learned in that class. I also used the same sorting algorithm
+and similar character count as that class, as well. It is nice and convenient to
+use code that I had already written in a new program. Originally I was going to
+write the program in Java, since that was the language I am most comfortable
+with. But I wanted to challenge myself, so I decided to use C++. It was to my
+advantage in the end, and I feel good about having been able to use C++ again.
